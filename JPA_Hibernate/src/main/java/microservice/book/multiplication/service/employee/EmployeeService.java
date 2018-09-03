@@ -8,4 +8,6 @@ public interface EmployeeService {
 
 	public List<Employee> allEmployees();
 	
+	public Employee createEmployee(Employee employee);
+	
 }

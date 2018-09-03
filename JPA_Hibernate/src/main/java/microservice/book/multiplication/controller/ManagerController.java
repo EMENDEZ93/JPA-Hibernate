@@ -1,5 +1,6 @@
 package microservice.book.multiplication.controller;
 
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,11 +22,17 @@ public class ManagerController {
 	@Autowired
 	@Qualifier("employeeService")
 	private EmployeeService employeeService;
-	
-	
+
 	@GetMapping("/employees")
 	public List<Employee> getEmployees() {
 
 		return employeeService.allEmployees();
+	}
+
+	@GetMapping("/employee/save")
+	public Employee createEmployee() {
+		Employee employee = new Employee
+				(2L, "Carola", "Ballesteros", new GregorianCalendar(1993,11,28).getTime());
+		return employeeService.createEmployee(employee);
 	}
 }

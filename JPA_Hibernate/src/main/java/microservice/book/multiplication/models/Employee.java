@@ -24,7 +24,6 @@ public class Employee implements Serializable {
 	private Date birthdate;
 
 	public Employee(long code, String name, String lastname, Date birthdate) {
-		super();
 		this.code = code;
 		this.name = name;
 		this.lastname = lastname;
