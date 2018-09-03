@@ -1,0 +1,1 @@
+insert into employee (code, name, lastname, birthdate) values (1,'Edwin','Mendez', '1993-01-20');
