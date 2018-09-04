@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import microservice.book.multiplication.models.Address;
 import microservice.book.multiplication.models.Employee;
 import microservice.book.multiplication.repository.EmployeeRepository;
 import microservice.book.multiplication.service.employee.EmployeeService;
@@ -38,6 +39,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public Employee createEmployee(Employee employee) {
 		manager.persist((Employee) employee);
 		return employee;
+	}
+
+	@Override
+	public void createAddress(Address address) {
+		manager.persist((Address) address);		
 	}
 
 	

@@ -1,11 +1,16 @@
 package microservice.book.multiplication.models;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,9 +26,13 @@ public class Employee implements Serializable {
 
 	private String lastname;
 
-	private Date birthdate;
+	private LocalDate birthdate;
 
-	public Employee(long code, String name, String lastname, Date birthdate) {
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "id_address")
+	private Address address;
+	
+	public Employee(long code, String name, String lastname, LocalDate birthdate) {
 		this.code = code;
 		this.name = name;
 		this.lastname = lastname;
@@ -57,12 +66,27 @@ public class Employee implements Serializable {
 		this.lastname = lastname;
 	}
 
-	public Date getBirthdate() {
+	public LocalDate getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [code=" + code + ", name=" + name + ", lastname=" + lastname + ", birthdate=" + birthdate
+				+ ", address=" + address.toString() + "]";
+	}
+
+		
 }
